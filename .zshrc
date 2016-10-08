@@ -2,6 +2,7 @@
 source ~/.zsh.d/auto_screen.zsh
 
 # Oh-My-Zsh settings
+ZSH="${HOME}/.oh-my-zsh"
 ZSH_THEME="powerline"
 POWERLINE_SHORT_HOST_NAME="true"
 POWERLINE_CUSTOM_CURRENT_PATH="%(4~|%-1~/…/%2~|%3~)"
