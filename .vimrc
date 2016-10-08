@@ -1,8 +1,8 @@
 " Use new features
 set nocompatible
 
-if filereadable("./.vim/google.vim")
-  source ./.vim/google.vim
+if filereadable("~/.vim/google.vim")
+  source ~/.vim/google.vim
 endif
 
 " Basic essentials.
