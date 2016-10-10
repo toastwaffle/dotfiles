@@ -10,7 +10,8 @@ if [ -x /usr/lib/x86_64-linux-gnu/xfce4/notifyd/xfce4-notifyd ] ; then
 fi
 
 # Load system specific files
-eval "$(hostname)-start.sh"
+startfile="${HOME}/.xmonad/$(hostname -s)-start.sh"
+eval "$(cat $startfile)"
 
 # Set cursor style
 xsetroot -cursor_name left_ptr &
@@ -22,27 +23,29 @@ setxkbmap gb &
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Put xmonad.hs in place
-if [ -L ~/.xmonad/xmonad.hs ];
+if [ -L ${HOME}/.xmonad/xmonad.hs ];
 then
-  rm ~/.xmonad/xmonad.hs
-  ln -s "~/.xmonad/$(hostname)-xmonad.hs" ~/.xmonad/xmonad.hs
+  rm ${HOME}/.xmonad/xmonad.hs
+  ln -s "${HOME}/.xmonad/$(hostname -s)-xmonad.hs" ${HOME}/.xmonad/xmonad.hs
 fi
 
 # Put xmobarrc in place
-if [ -L ~/.xmobarrc ];
+if [ -L ${HOME}/.xmobarrc ];
 then
-  rm ~/.xmonad/xmobarrc
-  ln -s "~/.$(hostname)-xmobarrc" ~/.xmobarrc
+  rm ${HOME}/.xmobarrc
+  ln -s "${HOME}/.$(hostname -s)-xmobarrc" ${HOME}/.xmobarrc
 fi
 
 # (Re)compile xmonad if necessary
-if [ ! ( -f ~/.xmonad/compile-hostname ) ];
+if [ ! -f ${HOME}/.xmonad/compile-hostname ];
 then
   xmonad --recompile
+  echo "$(hostname -s)" > ${HOME}/.xmonad/compile-hostname
 else
-  if [ ! ( "$(hostname)" = "$(cat ~/.xmonad/compile-hostname)" ) ];
+  if [ ! "$(hostname -s)" = "$(cat ${HOME}/.xmonad/compile-hostname)" ];
   then
     xmonad --recompile
+    echo "$(hostname -s)" > ${HOME}/.xmonad/compile-hostname
   fi
 fi
 
