@@ -81,11 +81,8 @@ set softtabstop=2
 set tabstop=2
 
 " q - Allow formatting of comments with gq.
-" r - Automatically insert comment leaders after hitting enter in insert mode.
-" t - Auto-wrap text using textwidth.
-" n - When formatting text, recognise numbered lists.
 " 1 - Don't break a line after a one-letter word. Break before it instead.
-set formatoptions=qrtn1
+set formatoptions=q1
 set textwidth=80
 
 " Set the options for :grep.
