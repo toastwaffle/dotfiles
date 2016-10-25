@@ -19,6 +19,8 @@ up() {
 
 mcd() { mkdir -p ${1} && cd ${1} }
 
+goto() { cd ${PWD%${1%%/*}/*}$1 }
+
 if [ -x /usr/bin/apt-get ];
 then
   source ~/.zsh.d/apt_aliases.zsh
