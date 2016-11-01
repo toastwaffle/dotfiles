@@ -1,0 +1,19 @@
+#!/usr/bin/zsh
+
+if [[ -z $EDITOR ]]; then
+ EDITOR=vim
+fi
+
+# Create a temporary file.
+TEMP_FILE=$(mktemp)
+on_exit() { rm -rf "$TEMP_FILE" }
+trap on_exit EXIT
+
+# Read stdin into the temporary file.
+>$TEMP_FILE
+
+# Edit the temporary file.
+$EDITOR $TEMP_FILE </dev/tty >/dev/tty
+
+# Output the temporary file.
+<$TEMP_FILE
