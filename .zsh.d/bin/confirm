@@ -1,0 +1,23 @@
+#!/usr/bin/zsh
+
+alias errcho='>&2 echo'
+
+# Display the command, with each argument shown on a new line.
+errcho "Command to execute:"
+errcho "$ $1 \\"
+for i in "${@:2:-1}"; do
+  errcho "  '$i' \\"
+done
+errcho "  '${@[-1]}'"
+
+# Prompt for confirmation.
+read -q "CONFIRM?Are you sure? "
+errcho
+
+if [[ $CONFIRM == 'y' ]]; then
+  # Run the command.
+  "$@"
+else
+  # Exit without running the command.
+  exit 1
+fi
