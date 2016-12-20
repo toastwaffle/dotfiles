@@ -1,23 +1,66 @@
 #!/usr/bin/zsh
 
+TIME_FORMAT='%H:%M:%S'
+
 alias errcho='>&2 echo'
+if [[ "$#" -eq 0 ]]; then
+  errcho 'Usage: confirm <command> [<arguments>]'
+  errcho ''
+  echo 'Displays the provided command back to you with all aliases and'  \
+       'variables expanded, and prompts for confirmation before executing'  \
+       'the command. Anything other than '\''Y'\'' or '\''y'\'' is'  \
+       'interpreted as a negative response.' |
+    fold -w 80 -s
+  exit
+fi
+
+source ~/.zsh.d/color.zsh
+
+RESET=$(color)
+
+COMMAND_COLOR=$(color cyan)
+SYMBOL_COLOR=$(color yellow)
+ARGUMENT_COLOR=$(color magenta)
+PROMPT_COLOR=$(color yellow)
+CONFIRM_COLOR=$(color green)
+DENY_COLOR=$(color red)
+INFO_COLOR=$(color cyan)
+
+display() {
+  if [[ "$#" -eq 1 ]]; then
+    errcho "$ ${SYMBOL_COLOR}'${COMMAND_COLOR}$1${SYMBOL_COLOR}'${RESET}"
+  else
+    errcho "$ ${SYMBOL_COLOR}'${COMMAND_COLOR}$1${SYMBOL_COLOR}' \\"
+    for i in "${@:2:-1}"; do
+      errcho "    '${ARGUMENT_COLOR}$i${SYMBOL_COLOR}' \\"
+    done
+    errcho "    '${ARGUMENT_COLOR}${@[-1]}${SYMBOL_COLOR}'${RESET}"
+  fi
+}
+
+COMMAND="$1"
+# Repeatedly dereference aliases until the command is no longer an alias.
+until [[ -z ${=aliases[$COMMAND]} ]]; do
+  COMMAND="${=aliases[$COMMAND]}"
+done
+# Expand the command into an array of its arguments.
+COMMAND=(${(Q)${(z)COMMAND}})
 
 # Display the command, with each argument shown on a new line.
-errcho "Command to execute:"
-errcho "$ $1 \\"
-for i in "${@:2:-1}"; do
-  errcho "  '$i' \\"
-done
-errcho "  '${@[-1]}'"
+errcho "${PROMPT_COLOR}Command to run${RESET}:"
+display $COMMAND "${@:2}"
 
 # Prompt for confirmation.
-read -q "CONFIRM?Are you sure? "
-errcho
+read -q "CONFIRM?${PROMPT_COLOR}Are you sure? ${RESET}"
 
 if [[ $CONFIRM == 'y' ]]; then
+  errcho "\r${PROMPT_COLOR}Are you sure? ${CONFIRM_COLOR}YES${RESET}"
+  errcho "${INFO_COLOR}Starting at $(date +${TIME_FORMAT})..${RESET}"
   # Run the command.
-  "$@"
+  $COMMAND "${@:2}"
+  errcho "${INFO_COLOR}Finished at $(date +${TIME_FORMAT}).${RESET}"
 else
   # Exit without running the command.
+  errcho "\r${PROMPT_COLOR}Are you sure? ${DENY_COLOR}NO${RESET}"
   exit 1
 fi
