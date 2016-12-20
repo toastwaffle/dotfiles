@@ -130,3 +130,6 @@ set wildmode=list:longest
 set wrap
 
 colorscheme monokai
+
+" Add magic for sudo save
+cmap w!! w !sudo tee > /dev/null %
