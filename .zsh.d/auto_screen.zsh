@@ -10,9 +10,9 @@ then
   sleep 1
   if [ -f ~/.zsh.d/google.zsh ];
   then
-    scrn -RR && exit 0
+    scrn -RRq && exit 0
   else
-    screen -RR && exit 0
+    screen -RRq && exit 0
   fi
   # normally, execution of this rc script ends here...
   echo "Screen failed! continuing with normal bash startup"
