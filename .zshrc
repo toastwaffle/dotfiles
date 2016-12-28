@@ -15,6 +15,9 @@ plugins=(sudo sublime)
 # Load Oh-My-Zsh
 source $HOME/.oh-my-zsh/oh-my-zsh.sh
 
+autoload bashcompinit
+bashcompinit
+
 # Add custom path entries
 if [ -f ~/.zsh.d/path.zsh ];
 then
