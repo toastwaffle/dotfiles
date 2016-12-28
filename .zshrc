@@ -35,4 +35,5 @@ source ~/.zsh.d/aliases.zsh
 if [ -f ~/.zsh.d/google.zsh ];
 then
   source ~/.zsh.d/google.zsh
+  ~/.zsh.d/bin/google
 fi
