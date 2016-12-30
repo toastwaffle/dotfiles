@@ -6,7 +6,6 @@
 if [ "$PS1" != "" -a "${STARTED_SCREEN:-x}" = x -a "${SSH_TTY:-x}" != x ]
 then
   STARTED_SCREEN=1 ; export STARTED_SCREEN
-  [ -d $HOME/lib/screen-logs ] || mkdir -p $HOME/lib/screen-logs
   sleep 1
   if [ -f ~/.zsh.d/google.zsh ];
   then
