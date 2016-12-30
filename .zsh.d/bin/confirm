@@ -38,6 +38,9 @@ display() {
   fi
 }
 
+# Load aliases
+source ${HOME}/.zsh.d/aliases.zsh
+
 COMMAND="$1"
 # Repeatedly dereference aliases until the command is no longer an alias.
 until [[ -z ${=aliases[$COMMAND]} ]]; do
@@ -55,10 +58,10 @@ read -q "CONFIRM?${PROMPT_COLOR}Are you sure? ${RESET}"
 
 if [[ $CONFIRM == 'y' ]]; then
   errcho "\r${PROMPT_COLOR}Are you sure? ${CONFIRM_COLOR}YES${RESET}"
-  errcho "${INFO_COLOR}Starting at $(date +${TIME_FORMAT})..${RESET}"
+  errcho "${INFO_COLOR}Starting at $(date +${TIME_FORMAT})${RESET}"
   # Run the command.
   $COMMAND "${@:2}"
-  errcho "${INFO_COLOR}Finished at $(date +${TIME_FORMAT}).${RESET}"
+  errcho "${INFO_COLOR}Finished at $(date +${TIME_FORMAT})${RESET}"
 else
   # Exit without running the command.
   errcho "\r${PROMPT_COLOR}Are you sure? ${DENY_COLOR}NO${RESET}"

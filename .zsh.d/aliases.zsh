@@ -32,3 +32,9 @@ then
 fi
 
 source ~/.zsh.d/git_aliases.zsh
+
+# Load Google specific aliases
+if [ -f ~/.zsh.d/google_aliases.zsh ];
+then
+  source ~/.zsh.d/google_aliases.zsh
+fi
