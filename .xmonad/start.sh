@@ -13,6 +13,9 @@ fi
 startfile="${HOME}/.xmonad/$(hostname -s)-start.sh"
 eval "$(cat $startfile)"
 
+# Make sure we use the updated dmenu_{run,path} if available
+PATH=${HOME}/.zsh.d/bin:${PATH}
+
 # Set cursor style
 xsetroot -cursor_name left_ptr &
 

@@ -1,0 +1,12 @@
+#!/usr/bin/zsh
+
+# Take a deduplicated list of path entries.
+paths() {
+ local IFS=:
+ TEMP=($=PATH)
+ local IFS=$'\n'
+ echo "$TEMP[*]" | sort -ui
+}
+
+# Generate the list of all executables in the path.
+find $(paths) -maxdepth 1 | xargs basename -a | sort
