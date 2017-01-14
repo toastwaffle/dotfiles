@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec $HOME/.xmonad/start.sh

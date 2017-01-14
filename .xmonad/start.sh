@@ -26,18 +26,12 @@ setxkbmap gb &
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Put xmonad.hs in place
-if [ -L ${HOME}/.xmonad/xmonad.hs ];
-then
-  rm ${HOME}/.xmonad/xmonad.hs
-  ln -s "${HOME}/.xmonad/$(hostname -s)-xmonad.hs" ${HOME}/.xmonad/xmonad.hs
-fi
+rm -f ${HOME}/.xmonad/xmonad.hs
+ln -s "${HOME}/.xmonad/$(hostname -s)-xmonad.hs" ${HOME}/.xmonad/xmonad.hs
 
 # Put xmobarrc in place
-if [ -L ${HOME}/.xmobarrc ];
-then
-  rm ${HOME}/.xmobarrc
-  ln -s "${HOME}/.$(hostname -s)-xmobarrc" ${HOME}/.xmobarrc
-fi
+rm -f ${HOME}/.xmobarrc
+ln -s "${HOME}/.$(hostname -s)-xmobarrc" ${HOME}/.xmobarrc
 
 # (Re)compile xmonad if necessary
 if [ ! -f ${HOME}/.xmonad/compile-hostname ];

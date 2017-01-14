@@ -1,0 +1,9 @@
+#!/usr/bin/zsh
+
+if [[ $1 == "on" ]]; then
+  xset dpms 0 0 0
+  xset -dpms
+else
+  xset +dpms
+  xset dpms 0 0 900
+fi

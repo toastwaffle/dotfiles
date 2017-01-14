@@ -1,0 +1,8 @@
+#!/usr/bin/zsh
+
+/usr/bin/chromium \
+  --disk-cache-dir=/tmp/chromium-cache \
+  --disk-cache-size=50000000 \
+  --purge-memory-button \
+  --allow-file-access-from-files \
+  --enable-print-preview

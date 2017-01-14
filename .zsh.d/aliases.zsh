@@ -21,6 +21,13 @@ mcd() { mkdir -p ${1} && cd ${1} }
 
 goto() { cd ${PWD%${1%%/*}/*}$1 }
 
+add_bin() {
+  echo "#!/usr/bin/zsh\n\n" > $HOME/.zsh.d/bin/$1
+  $EDITOR $HOME/.zsh.d/bin/$1
+  chmod +x $HOME/.zsh.d/bin/$1
+  dotgit add $HOME/.zsh.d/bin/$1
+}
+
 if [ -x /usr/bin/apt-get ];
 then
   source ~/.zsh.d/apt_aliases.zsh

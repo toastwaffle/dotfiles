@@ -1,0 +1,4 @@
+#!/usr/bin/zsh
+
+/usr/bin/nautilus \
+  --no-desktop
