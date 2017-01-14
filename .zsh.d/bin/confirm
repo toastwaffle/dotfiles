@@ -45,6 +45,7 @@ COMMAND="$1"
 # Repeatedly dereference aliases until the command is no longer an alias.
 until [[ -z ${=aliases[$COMMAND]} ]]; do
   COMMAND="${=aliases[$COMMAND]}"
+  COMMAND="${COMMAND:s/nocorrect/}"
 done
 # Expand the command into an array of its arguments.
 COMMAND=(${(Q)${(z)COMMAND}})
