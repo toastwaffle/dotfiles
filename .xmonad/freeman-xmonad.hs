@@ -86,6 +86,8 @@ myKeys =
     , ((controlMask, xK_F4), spawn "nautilus")
     , ((0, xK_F12), scratchpadSpawnActionCustom "lxterminal --name scratchpad --class Scratchpad --geometry=200x25")
     , ((mod4Mask, xK_b), sendMessage ToggleStruts)
+    , ((0, 0x1008FF02), spawn "xbacklight -inc 5")
+    , ((0, 0x1008FF03), spawn "xbacklight -dec 5")
     , ((0, 0x1008FF11), spawn "volume -5%")
     , ((0, 0x1008FF12), spawn "volume toggle-mute")
     , ((0, 0x1008FF13), spawn "volume +5%")
