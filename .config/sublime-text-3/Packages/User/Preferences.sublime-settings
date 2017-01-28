@@ -1,0 +1,38 @@
+{
+	"always_show_minimap_viewport": true,
+	"auto_complete_commit_on_tab": true,
+	"bold_folder_labels": true,
+	"caret_style": "phase",
+	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
+	"copy_with_empty_selection": false,
+	"dictionary": "Packages/Language - English/en_GB.dic",
+	"enable_telemetry": true,
+	"ensure_newline_at_eof_on_save": true,
+	"fade_fold_buttons": false,
+	"fallback_encoding": "UTF-8",
+	"font_size": 10,
+	"highlight_line": true,
+	"highlight_modified_tabs": true,
+	"ignored_packages":
+	[
+		"Markdown",
+		"Vintage"
+	],
+	"indent_guide_options":
+	[
+		"draw_normal",
+		"draw_active"
+	],
+	"margin": 0,
+	"overlay_scroll_bars": "enabled",
+	"line_padding_top": 1,
+	"rulers":
+	[
+		80
+	],
+	"shift_tab_unindent": true,
+	"show_encoding": true,
+	"show_line_endings": true,
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true
+}
