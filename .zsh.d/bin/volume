@@ -1,13 +1,13 @@
 #!/usr/bin/zsh
 
-SINKS=$(pactl list sinks | grep -P 'Sink #\d+' | grep -Po '\d+')
+SINKS_COMMAND="pactl list sinks | grep -P 'Sink #\d+' | grep -Po '\d+'"
 
 if [[ $1 == 'toggle-mute' ]]; then
-  for sink in $SINKS; do
+  for sink in $(eval $SINKS_COMMAND); do
     pactl set-sink-mute $sink toggle
   done
 else
-  for sink in $SINKS; do
+  for sink in $(eval $SINKS_COMMAND); do
     pactl set-sink-volume $sink $1
   done
 fi
