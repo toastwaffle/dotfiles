@@ -41,7 +41,7 @@ myManageHook = composeAll . concat $
     ]
     where
         myClassFloats = ["Scratchpad", "Pinentry"]
-        myUnshiftedClasses = ["Chromium", "Spotify", "Subl3", "Nautilus", "Skype", "Xfce4-terminal", "Xfce4-notifyd", "Scratchpad", "Pinentry"]
+        myUnshiftedClasses = ["Chromium", "Spotify", "Subl3", "Nautilus", "Skype", "Xfce4-notifyd", "Xfce4-terminal", "Scratchpad", "Pinentry"]
 
 manageScratchPad = scratchpadManageHook (W.RationalRect 0 0 1 0.5)
 
@@ -76,7 +76,7 @@ myMouse x = [ ((controlMask .|. mod4Mask, button3), (\w -> focus w >> Flex.mouse
 newMouse x = M.union (mouseBindings defaultConfig x) (M.fromList (myMouse x))
 
 myKeys =
-    [ ((controlMask .|. mod1Mask, xK_l), spawn "/home/samuel/.zsh.d/bin/lock")
+    [ ((controlMask .|. mod1Mask, xK_l), spawn "lock")
     , ((shiftMask .|. mod4Mask, xK_w), spawn "systemctl reboot")
     , ((mod4Mask, xK_w), spawn "systemctl poweroff")
     , ((shiftMask .|. mod4Mask, xK_a), spawn "keepass --auto-type")
@@ -90,7 +90,6 @@ myKeys =
     , ((0, 0x1008FF12), spawn "volume toggle-mute")
     , ((0, 0x1008FF13), spawn "volume +5%")
     , ((0, 0x1008FF14), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause")
-    , ((0, 0x1008FF15), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop")
     , ((0, 0x1008FF16), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous")
     , ((0, 0x1008FF17), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next")
     ]

@@ -41,7 +41,7 @@ myManageHook = composeAll . concat $
     ]
     where
         myClassFloats = ["Scratchpad", "Pinentry"]
-        myUnshiftedClasses = ["Chromium", "Spotify", "Subl3", "Nautilus", "Skype", "Xfce4-terminal", "Xfce4-notifyd", "Scratchpad", "Pinentry"]
+        myUnshiftedClasses = ["Chromium", "Spotify", "Subl3", "Nautilus", "Skype", "Xfce4-notifyd", "Xfce4-terminal", "Scratchpad", "Pinentry"]
 
 manageScratchPad = scratchpadManageHook (W.RationalRect 0 0 1 0.5)
 
@@ -76,7 +76,7 @@ myMouse x = [ ((controlMask .|. mod4Mask, button3), (\w -> focus w >> Flex.mouse
 newMouse x = M.union (mouseBindings defaultConfig x) (M.fromList (myMouse x))
 
 myKeys =
-    [ ((controlMask .|. mod1Mask, xK_l), spawn "/home/samuel/.zsh.d/bin/lock")
+    [ ((controlMask .|. mod1Mask, xK_l), spawn "lock")
     , ((shiftMask .|. mod4Mask, xK_w), spawn "systemctl reboot")
     , ((mod4Mask, xK_w), spawn "systemctl poweroff")
     , ((shiftMask .|. mod4Mask, xK_a), spawn "keepass --auto-type")
