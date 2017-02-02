@@ -1,20 +1,27 @@
 [user]
-        name = Samuel Littley
-        email = samuel.littley@toastwaffle.com
+  name = Samuel Littley
+  email = samuel.littley@toastwaffle.com
 [alias]
-        lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-        co = checkout
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  co = checkout
+	dt = difftool --dir-diff
 [color]
-        ui = true
+  ui = true
 [push]
-        default = simple
+  default = simple
 [core]
-        pager = less -x2
-        autocrlf = input
-        safecrlf = false
+  pager = less -x2
+  autocrlf = input
+  safecrlf = false
 [branch]
-        autosetuprebase = always
+  autosetuprebase = always
 [merge]
-        tool = meld
+  tool = meld
+[mergetool "meld"]
+  cmd = meld "$LOCAL" "$BASE" "$REMOTE" --output "$MERGED"
 [diff]
-        tool = meld
+  tool = meld
+[difftool]
+  prompt = false
+[difftool "meld"]
+  cmd = meld "$LOCAL" "$REMOTE"
