@@ -28,9 +28,9 @@ TARGETS = [
         )
     ),
     (
-        'In Oxford',
+        'Up North',
         pytz.timezone('Europe/London').localize(
-            datetime.datetime(2017, 2, 3, 13, 14),
+            datetime.datetime(2017, 2, 17, 21, 54),
             is_dst=False
         )
     ),
