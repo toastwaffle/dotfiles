@@ -1,4 +1,5 @@
 #!/usr/bin/zsh
 
 /usr/bin/nautilus \
-  --no-desktop
+  --no-desktop \
+  $@
