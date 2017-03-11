@@ -100,7 +100,7 @@ def format_timedelta(delta):
 def main():
     """Calculate the time delta and format it."""
     target = TARGETS[
-        int(time.time() / 10) % len(TARGETS)
+        int(time.time() / 5) % len(TARGETS)
     ]
 
     if target[1] > pytz.UTC.localize(datetime.datetime.utcnow()):
