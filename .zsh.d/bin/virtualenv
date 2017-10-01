@@ -1,0 +1,6 @@
+#!/usr/bin/zsh
+
+${HOME}/.zsh.d/bin/generate_virtualenv_script.py
+chmod +x ${HOME}/.zsh.d/bin/make_virtualenv.py
+${HOME}/.zsh.d/bin/make_virtualenv.py $@
+${HOME}/.zsh.d/bin/make_virtualenv.py --relocatable $@
