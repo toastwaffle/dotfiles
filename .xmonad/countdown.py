@@ -1,5 +1,5 @@
 #!/usr/bin/env python2
-"""Script to display a countdown until finishing Uni."""
+"""Script to display a countdown until various things."""
 
 import datetime
 import pytz
@@ -28,10 +28,10 @@ TARGETS = [
         )
     ),
     (
-        'In Oxford for Graduation',
+        'Visiting Becky for Candide',
         pytz.timezone('Europe/London').localize(
-            datetime.datetime(2017, 5, 5, 13, 14),
-            is_dst=True
+            datetime.datetime(2017, 11, 4, 16, 14),
+            is_dst=False
         )
     ),
 ]
