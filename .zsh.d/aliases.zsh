@@ -45,3 +45,6 @@ if [ -f ~/.zsh.d/google_aliases.zsh ];
 then
   source ~/.zsh.d/google_aliases.zsh
 fi
+
+alias limeb='source ~/Code/LiME/Backend/bin/activate && ~/Code/LiME/Backend/command.py dev run && deactivate'
+alias limef='cd ~/Code/LiME/Frontend && yarn eslintf && yarn start'
