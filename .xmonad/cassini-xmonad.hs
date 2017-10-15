@@ -31,7 +31,7 @@ myManageHook = composeAll . concat $
     [ [ className =? c --> doFloat | c <- myClassFloats ]
     , [ className =? "Chromium" --> doShift "1" ]
     , [ className =? "Spotify" --> doShift "2" ]
-    , [ className =? "Subl3" --> doShift "3" ]
+    , [ className =? "Sublime_text" --> doShift "3" ]
     , [ className =? "Nautilus" --> doShift "4" ]
     , [ className =? "Skype" --> doShift "9" ]
     , [ className =? "Xfce4-notifyd" --> doIgnore ]
@@ -41,7 +41,7 @@ myManageHook = composeAll . concat $
     ]
     where
         myClassFloats = ["Scratchpad", "Pinentry"]
-        myUnshiftedClasses = ["Chromium", "Spotify", "Subl3", "Nautilus", "Skype", "Xfce4-notifyd", "Xfce4-terminal", "Scratchpad", "Pinentry"]
+        myUnshiftedClasses = ["Chromium", "Spotify", "Sublime_text", "Nautilus", "Skype", "Xfce4-notifyd", "Xfce4-terminal", "Scratchpad", "Pinentry"]
 
 manageScratchPad = scratchpadManageHook (W.RationalRect 0 0 1 0.5)
 
@@ -82,7 +82,7 @@ myKeys =
     , ((shiftMask .|. mod4Mask, xK_a), spawn "keepass --auto-type")
     , ((controlMask, xK_F1), spawn "chromium")
     , ((controlMask, xK_F2), spawn "spotify")
-    , ((controlMask, xK_F3), spawn "subl3")
+    , ((controlMask, xK_F3), spawn "subl")
     , ((controlMask, xK_F4), spawn "nautilus")
     , ((0, xK_F12), scratchpadSpawnActionCustom "lxterminal --name scratchpad --class Scratchpad --geometry=200x25")
     , ((mod4Mask, xK_b), sendMessage ToggleStruts)
