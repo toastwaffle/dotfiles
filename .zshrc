@@ -27,6 +27,7 @@ fi
 # Env variables
 export LANG=en_GB.UTF-8
 export EDITOR='vim'
+export PYTHONSTARTUP="${HOME}/.pythonrc.py"
 
 # Load aliases
 source ~/.zsh.d/aliases.zsh
