@@ -1,0 +1,17 @@
+Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
+       , bgColor = "#444444"
+       , fgColor = "white"
+       , position = Static { xpos = 0 , ypos = 0, width = 1820, height = 20 }
+       , commands = [ Run Cpu ["-t","C: <total>%","-L","3","-H","50","--normal","green","--high","red"] 10
+                    , Run Memory ["-t","M: <usedratio>%","-L","35","-H","45","--low","green","--normal","orange","--high","red"] 10
+                    , Run Network "external" ["-t","E: <rx>/<tx>KB","-L","20","-H","50","--low","red","--normal","orange","--high","green"] 10
+                    , Run Network "internal" ["-t","I: <rx>/<tx>KB","-L","20","-H","50","--low","red","--normal","orange","--high","green"] 10
+                    , Run Network "wireless" ["-t","W: <rx>/<tx>KB","-L","20","-H","50","--low","red","--normal","orange","--high","green"] 10
+                    , Run Com "/home/samuel/.xmonad/cputemp.sh" [] "cputemp" 10
+                    , Run Date "%a %b %_d %H:%M:%S" "date" 10
+                    , Run StdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = " %StdinReader% }{ %cpu% | %memory% | %external% | %internal% | %wireless% | %cputemp% <fc=#ee9a00>%date%</fc>"
+       }
