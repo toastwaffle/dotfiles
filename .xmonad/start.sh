@@ -29,6 +29,10 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 rm -f ${HOME}/.xmonad/xmonad.hs
 ln -s "${HOME}/.xmonad/$(hostname -s)-xmonad.hs" ${HOME}/.xmonad/xmonad.hs
 
+# Put cputump.sh in place
+rm -f ${HOME}/.xmonad/cputemp.sh
+ln -s "${HOME}/.xmonad/$(hostname -s)-cputemp.sh" ${HOME}/.xmonad/cputemp.sh
+
 # Put xmobarrc in place
 rm -f ${HOME}/.xmobarrc
 ln -s "${HOME}/.$(hostname -s)-xmobarrc" ${HOME}/.xmobarrc

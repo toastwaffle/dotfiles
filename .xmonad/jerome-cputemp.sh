@@ -1,5 +1,5 @@
 #!/bin/bash
-temp1=`cat /sys/class/thermal/thermal_zone0/temp`
+temp1=`cat /sys/class/thermal/thermal_zone2/temp`
 temp=`expr $temp1 / 1000`
 if [ $temp -le 50 ]
     then
