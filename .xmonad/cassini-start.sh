@@ -41,7 +41,7 @@ fi
 export GPG_AGENT_INFO  # the env file does not contain the export statement
 export SSH_AUTH_SOCK   # enable gpg-agent for ssh
 
-feh --bg-tile /home/samuel/.backgrounds/1920x1080.png
+feh --no-fehbg --bg-tile /home/samuel/.backgrounds/1920x1080.png
 
 if (xsetwacom --list devices | grep "Wacom Bamboo One M Pen stylus"); then
     xsetwacom --set "Wacom Bamboo One M Pen stylus" MapToOutput "1920x1080+1920+0"

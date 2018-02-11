@@ -16,6 +16,6 @@ xsetroot -cursor_name left_ptr &
 
 setxkbmap gb &
 
-feh --bg-tile /home/samuel/.backgrounds/1920x1080.png
+feh --no-fehbg --bg-tile /home/samuel/.backgrounds/1920x1080.png
 
 stalonetray --background '#444444' --geometry '5x1+1820' --icon-size 20 --icon-gravity NE --max-geometry '96x1' &
