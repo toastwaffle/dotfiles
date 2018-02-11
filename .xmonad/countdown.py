@@ -28,9 +28,30 @@ TARGETS = [
         )
     ),
     (
-        'Visiting Becky for Candide',
+        'Visiting Becky for Birthday',
         pytz.timezone('Europe/London').localize(
-            datetime.datetime(2017, 11, 4, 16, 14),
+            datetime.datetime(2018, 2, 17, 12, 00),
+            is_dst=False
+        )
+    ),
+    (
+        'Hamilton',
+        pytz.timezone('Europe/London').localize(
+            datetime.datetime(2018, 3, 19, 19, 30),
+            is_dst=False
+        )
+    ),
+    (
+        'Toulouse',
+        pytz.timezone('Europe/London').localize(
+            datetime.datetime(2018, 3, 30, 22, 25),
+            is_dst=False
+        )
+    ),
+    (
+        'Lake Como',
+        pytz.timezone('Europe/Rome').localize(
+            datetime.datetime(2018, 9, 04, 12, 05),
             is_dst=False
         )
     ),
