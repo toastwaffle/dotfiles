@@ -29,6 +29,7 @@ export LANG=en_GB.UTF-8
 export EDITOR='vim'
 export PYTHONSTARTUP="${HOME}/.pythonrc.py"
 export GOPATH="${HOME}/.go"
+export __GL_SHADER_DISK_CACHE_PATH="${HOME}/.cache/nv"
 
 # Load aliases
 source ~/.zsh.d/aliases.zsh
