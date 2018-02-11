@@ -10,6 +10,7 @@ alias diff='colordiff'
 alias open='subl -na'
 alias hgrep='history | grep'
 alias snip='vim "+match Error /.^/" "+normal Go" +startinsert ~/snippets.txt'
+alias se='sudoedit'
 
 alias dotgit="git --git-dir=${HOME}/.dotfiles/ --work-tree=${HOME}"
 
