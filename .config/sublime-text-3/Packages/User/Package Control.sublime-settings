@@ -1,0 +1,36 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"BazelSyntax",
+		"ChannelRepositoryTools",
+		"ESLint-Formatter",
+		"GoImports",
+		"Jinja2",
+		"JsPrettier",
+		"JSX",
+		"LitElement Syntax Highlighting",
+		"LSP",
+		"LSP-css",
+		"LSP-eslint",
+		"LSP-gopls",
+		"LSP-typescript",
+		"Markdown Extended",
+		"MarkdownPreview",
+		"Package Control",
+		"Protocol Buffer Syntax",
+		"ReactJS",
+		"Sass",
+		"SFTP",
+		"SublimeLinter-cppcheck",
+		"SublimeLinter-cpplint",
+		"SublimeLinter-eslint",
+		"SublimeLinter-pylint",
+		"Terrafmt",
+		"Terraform",
+		"TypeScript Syntax",
+	],
+}
