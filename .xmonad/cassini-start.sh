@@ -18,19 +18,13 @@ if [ -x /usr/lib/gnome-settings-daemon/gnome-settings-daemon ] ; then
     /usr/lib/gnome-settings-daemon/gnome-settings-daemon &
 fi
 
-if [ -x /opt/dropbox/dropbox ] ; then
-	/opt/dropbox/dropbox start &
-fi
-
-if [ -x /usr/bin/galileo ] ; then
-   /usr/bin/galileo daemon &
+if [ -x /usr/bin/nextcloud ] ; then
+	/usr/bin/nextcloud &
 fi
 
 xsetroot -cursor_name left_ptr &
 
 setxkbmap gb &
-
-autossh -M 0 -fnTN josef_tunnel &
 
 envfile="$HOME/.gnupg/gpg-agent.env"
 if [[ -e "$envfile" ]] && kill -0 $(grep GPG_AGENT_INFO "$envfile" | cut -d: -f 2) 2>/dev/null; then
@@ -48,4 +42,4 @@ if (xsetwacom --list devices | grep "Wacom Bamboo One M Pen stylus"); then
     xsetwacom --set "Wacom Bamboo One M Pen stylus" Rotate half
 fi
 
-stalonetray --background '#444444' --geometry '5x1+1820' --icon-size 20 --icon-gravity NE --max-geometry '96x1' &
+stalonetray --background '#444444' --geometry '5x1+7480' --icon-size 40 --icon-gravity NE --max-geometry '96x1' --window-strut top &

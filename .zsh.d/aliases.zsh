@@ -5,7 +5,6 @@ alias o=$EDITOR
 
 alias rc='o ~/.zshrc && source ~/.zshrc'
 alias setalias='vim ~/.zsh.d/aliases.zsh && source ~/.zsh.d/aliases.zsh'
-alias cat='pygmentize -g'
 alias diff='colordiff'
 alias open='subl -na'
 alias hgrep='history | grep'
@@ -34,9 +33,9 @@ then
   source ~/.zsh.d/apt_aliases.zsh
 fi
 
-if [ -x /usr/bin/pacaur ];
+if [ -x /usr/bin/yay ];
 then
-  source ~/.zsh.d/pacaur_aliases.zsh
+  source ~/.zsh.d/yay_aliases.zsh
 fi
 
 source ~/.zsh.d/git_aliases.zsh

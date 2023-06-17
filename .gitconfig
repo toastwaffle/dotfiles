@@ -9,6 +9,7 @@
   ui = true
 [push]
   default = simple
+	autoSetupRemote = true
 [core]
   pager = less -x2
   autocrlf = input
@@ -25,3 +26,5 @@
   prompt = false
 [difftool "meld"]
   cmd = meld "$LOCAL" "$REMOTE"
+[init]
+	defaultBranch = master

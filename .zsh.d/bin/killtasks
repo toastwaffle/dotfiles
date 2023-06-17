@@ -1,0 +1,7 @@
+#!/usr/bin/zsh
+
+SESSION="tasks"
+
+tmux send-keys -t $SESSION:0.0 C-c
+tmux send-keys -t $SESSION:0.1 C-c
+tmux kill-session -t $SESSION

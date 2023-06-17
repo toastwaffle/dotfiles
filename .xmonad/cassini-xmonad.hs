@@ -1,12 +1,12 @@
 import XMonad
 import XMonad.ManageHook
+import XMonad.Config.Desktop
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops (ewmh,fullscreenEventHook)
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
 import XMonad.Layout.Renamed
-import XMonad.Layout.NoBorders
 import XMonad.Layout.MultiColumns
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.Grid
@@ -32,16 +32,15 @@ myManageHook = composeAll . concat $
     , [ className =? "Chromium" --> doShift "1" ]
     , [ className =? "Spotify" --> doShift "2" ]
     , [ className =? "Sublime_text" --> doShift "3" ]
-    , [ className =? "Nautilus" --> doShift "4" ]
+    , [ className =? "Org.gnome.Nautilus" --> doShift "4" ]
     , [ className =? "Skype" --> doShift "9" ]
     , [ className =? "Xfce4-notifyd" --> doIgnore ]
     , [ queryNotElem className myUnshiftedClasses --> doShift "5" ]
     , [ isFullscreen --> (doF W.focusDown <+> doFullFloat) ]
-    , [ manageDocks ]
     ]
     where
         myClassFloats = ["Scratchpad", "Pinentry"]
-        myUnshiftedClasses = ["Chromium", "Spotify", "Sublime_text", "Nautilus", "Skype", "Xfce4-notifyd", "Xfce4-terminal", "Scratchpad", "Pinentry"]
+        myUnshiftedClasses = ["Chromium", "Spotify", "Sublime_text", "Org.gnome.Nautilus", "Skype", "Xfce4-notifyd", "Xfce4-terminal", "Scratchpad", "Pinentry"]
 
 manageScratchPad = scratchpadManageHook (W.RationalRect 0 0 1 0.5)
 
@@ -56,30 +55,22 @@ layoutDelta = 1/182
 
 tiledPart = Tall layoutNMaster layoutDelta layoutRatio
 
-tiledLayout = simpleTabbed ||| tiledPart ||| Mirror tiledPart ||| Full ||| Grid
+myTheme = def { fontName = "xft:Ubuntu Mono:size=10"
+              , decoHeight = 40
+              }
 
-skypeRoster  = (ClassName "Skype")                  `And`
-               (Not (Title "Options"))              `And`
-               (Not (Title "File Transfers"))       `And`
-               (Not (Title "Add a Skype Contact"))  `And`
-               (Not (Title "Add to Chat"))          `And`
-               (Not (Role "ConversationsWindow"))   `And`
-               (Not (Role "CallWindow"))
+myTabbed = tabbed shrinkText myTheme
 
-imLayout = renamed [CutWordsLeft 2] $
-           withIM (1%6) (skypeRoster) $
-           reflectHoriz $ withIM (1%5) (Role "buddy_list") $
-           tiledLayout
+tiledLayout = myTabbed ||| tiledPart ||| Mirror tiledPart ||| Full ||| Grid
 
 myMouse x = [ ((controlMask .|. mod4Mask, button3), (\w -> focus w >> Flex.mouseResizeWindow w)) ]
 
-newMouse x = M.union (mouseBindings defaultConfig x) (M.fromList (myMouse x))
+newMouse x = M.union (mouseBindings def x) (M.fromList (myMouse x))
 
 myKeys =
     [ ((controlMask .|. mod1Mask, xK_l), spawn "lock")
     , ((shiftMask .|. mod4Mask, xK_w), spawn "systemctl reboot")
     , ((mod4Mask, xK_w), spawn "systemctl poweroff")
-    , ((shiftMask .|. mod4Mask, xK_a), spawn "keepass --auto-type")
     , ((controlMask, xK_F1), spawn "chromium")
     , ((controlMask, xK_F2), spawn "spotify")
     , ((controlMask, xK_F3), spawn "subl")
@@ -104,20 +95,17 @@ queryNotElem a b = do
 
 main = do
     xmproc <- spawnPipe "xmobar /home/samuel/.xmobarrc"
-    xmonad $ ewmh defaultConfig
+    xmonad $ ewmh desktopConfig
         { terminal = "xfce4-terminal"
         , focusedBorderColor = "#8bcd00"
         , modMask = mod4Mask
         , workspaces = myWorkspaces
         , mouseBindings = newMouse
-        , manageHook = myManageHook <+> manageHook defaultConfig <+> manageScratchPad
-        , layoutHook = smartBorders $ avoidStruts $ onWorkspace "9" imLayout tiledLayout
-        , handleEventHook = mappend docksEventHook fullscreenEventHook
+        , manageHook = myManageHook <+> manageScratchPad <+> manageHook desktopConfig
+        , layoutHook = desktopLayoutModifiers $ tiledLayout
         , logHook = dynamicLogWithPP xmobarPP
                         { ppOutput = hPutStrLn xmproc
                         , ppTitle = xmobarColor "#ff007f" "" . shorten 80
                         , ppHidden = \x -> if x `elem` boringWorkspaces then "" else x
-                        -- Comment to report layout
-                        --, ppLayout = \x -> ""
                         }
         } `additionalKeys` myKeys

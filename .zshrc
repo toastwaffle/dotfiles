@@ -1,6 +1,8 @@
 # Make sure we jump into a screen as soon as possible
 source ~/.zsh.d/auto_screen.zsh
 
+source /etc/profile
+
 # Oh-My-Zsh settings
 ZSH="${HOME}/.oh-my-zsh"
 ZSH_THEME="powerline"
@@ -40,3 +42,8 @@ then
   source ~/.zsh.d/google.zsh
   ~/.zsh.d/bin/google
 fi
+
+complete -o nospace -C /usr/bin/terraform terraform
+
+# opam configuration
+[[ ! -r /home/samuel/.opam/opam-init/init.zsh ]] || source /home/samuel/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null

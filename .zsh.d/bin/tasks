@@ -1,0 +1,15 @@
+#!/usr/bin/zsh
+
+SESSION="tasks"
+
+cd "${HOME}/Code/tasks"
+
+subl tasks.sublime-project
+
+tmux kill-session -t $SESSION
+tmux new-session -d -s $SESSION
+tmux split-window -h -t $SESSION:0.0
+tmux split-window -v -t $SESSION:0.1
+tmux send-keys -t $SESSION:0.0 "npm run build:dev" Enter
+tmux send-keys -t $SESSION:0.1 "firebase emulators:start" Enter
+tmux attach-session -t $SESSION
